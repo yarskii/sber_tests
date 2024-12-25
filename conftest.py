@@ -1,11 +1,11 @@
 from selene import browser
 from selenium import webdriver
 import pytest
-from selenium.webdriver.chrome import service
 from selenium.webdriver.chrome.options import Options
 from dotenv import load_dotenv
 import os
 from resources import attach
+
 
 DEFAULT_BROWSER_VERSION = "126.0"
 
@@ -43,10 +43,22 @@ def open_browser(request):
 
     driver = webdriver.Remote(
         command_executor=f"https://{selenoid_login}:{selenoid_pass}@{selenoid_url}/wd/hub",
-        options=options
+        options=options,
+        keep_alive=True
     )
 
     browser.config.driver = driver
+
+    driver_options = webdriver.ChromeOptions()
+
+    driver_options.page_load_strategy = 'eager'
+    driver_options.add_argument('--ignore-certificate-errors')
+    browser.config.driver_options = driver_options
+    #
+    browser.config.window_width = 1280
+    browser.config.window_height = 724
+
+    browser.config.base_url = 'https://rabota.sber.ru'
 
     yield driver
 
@@ -58,15 +70,15 @@ def open_browser(request):
     driver.quit()
 
 
-@pytest.fixture(scope='session')
-def open_sber_url(open_browser):
-    driver_options = Options()
-    driver_options.add_argument('--ignore-certificate-errors')
-    driver_options.page_load_strategy = 'eager'
-
-    browser.config.driver_options = driver_options
-
-    browser.config.window_width = 1280
-    browser.config.window_height = 724
-
-    browser.config.base_url = 'https://rabota.sber.ru'
+# @pytest.fixture(scope='session')
+# def open_sber_url():
+#     driver_options = webdriver.ChromeOptions()
+#
+#     driver_options.page_load_strategy = 'eager'
+#     driver_options.add_argument('--ignore-certificate-errors')
+#     browser.config.driver_options = driver_options
+#
+#     browser.config.window_width = 1280
+#     browser.config.window_height = 724
+#
+#     browser.config.base_url = 'https://rabota.sber.ru'
