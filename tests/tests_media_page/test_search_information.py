@@ -13,7 +13,7 @@ interests = ['Статья', 'Личный опыт', 'Личное развит
 def test_search_information(open_sber_url):
     search = SberSearchPage()
 
-    with allure.step('Открывает сайт https://rabota.sber.ru'):
+    with allure.step('Открывает сайт "https://rabota.sber.ru"'):
         search.open()
 
     with allure.step('Переходим на вкладку "Карьерные медиа"'):

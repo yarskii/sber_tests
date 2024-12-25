@@ -13,7 +13,7 @@ from model.pages.search_sber_page import SberSearchPage
 def test_search_python_vacancy(open_sber_url):
     search = SberSearchPage()
 
-    with allure.step('Открывает сайт https://rabota.sber.ru'):
+    with allure.step('Открывает сайт "https://rabota.sber.ru"'):
         search.open()
 
     with allure.step('Вводим в строку поиска интересующий язык программирования'):

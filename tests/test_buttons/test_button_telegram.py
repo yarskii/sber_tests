@@ -11,7 +11,7 @@ from model.pages.search_sber_page import SberSearchPage
 def test_telegram_button(open_sber_url):
     search = SberSearchPage()
 
-    with allure.step('Открывает сайт https://rabota.sber.ru'):
+    with allure.step('Открывает сайт "https://rabota.sber.ru"'):
         search.open()
 
     with allure.step('Находим кнопку Telegram и проверяем, что она видима и кликабельна'):
