@@ -62,6 +62,7 @@ def open_sber_url(open_browser):
     driver_options = webdriver.ChromeOptions()
     driver_options.add_argument('--ignore-certificate-errors')
     driver_options.page_load_strategy = 'eager'
+
     browser.config.driver_options = driver_options
 
     browser.config.window_width = 1280
