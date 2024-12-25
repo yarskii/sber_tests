@@ -67,7 +67,7 @@ def open_sber_url():
     chrome_options.page_load_strategy = 'eager'
 
     service = Service(ChromeDriverManager().install())
-    browser = webdriver.Chrome(service=service, options=chrome_options)
+    driver = webdriver.Chrome(service=service, options=chrome_options)
 
     browser.set_window_size(1280, 724)
     base_url = 'https://rabota.sber.ru'
@@ -78,6 +78,6 @@ def open_sber_url():
         'base_url': base_url,
     }
 
-    yield browser
+    yield driver
 
     browser.quit()
