@@ -63,8 +63,6 @@ def open_browser(request):
 @pytest.fixture(scope='session')
 def open_sber_url(open_browser):
     driver_options = webdriver.ChromeOptions()
-    driver_options.add_argument('--no-sandbox')
-    driver_options.add_argument('--disable-dev-shm-usage')
     driver_options.page_load_strategy = 'eager'
     driver_options.add_argument('--ignore-certificate-errors')
 
