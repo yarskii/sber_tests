@@ -60,7 +60,7 @@ def open_browser(request):
 
 @pytest.fixture(scope='session')
 def open_sber_url(open_browser):
-    driver_options = Options
+    driver_options = Options()
     driver_options.add_argument('--ignore-certificate-errors')
     driver_options.page_load_strategy = 'eager'
 
