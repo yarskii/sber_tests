@@ -62,22 +62,15 @@ def open_browser(request):
 
 @pytest.fixture(scope='session', autouse=True)
 def open_sber_url():
-    chrome_options = Options()
-    chrome_options.add_argument('--ignore-certificate-errors')
-    chrome_options.page_load_strategy = 'eager'
+    driver_options = webdriver.ChromeOptions()
+    driver_options.page_load_strategy = 'eager'
+    driver_options.add_argument('--ignore-certificate-errors')
+    browser.config.driver_options = driver_options
 
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    browser.config.window_width = 1280
+    browser.config.window_height = 724
+    browser.config.base_url = 'https://rabota.sber.ru'
 
-    browser.set_window_size(1280, 724)
-    base_url = 'https://rabota.sber.ru'
-
-    browser.config = {
-        'window_width': 1280,
-        'window_height': 724,
-        'base_url': base_url,
-    }
-
-    yield driver
+    yield
 
     browser.quit()
