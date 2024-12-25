@@ -8,7 +8,7 @@ from model.pages.search_sber_page import SberSearchPage
 @allure.story("Проверяем количество отмеченных позиций")
 @allure.label("owner", "Ярослав Гусев")
 @allure.link("https://rabota.sber.ru", name="Testing")
-def test_choice_conditions():
+def test_choice_conditions(open_sber_url):
     search = SberSearchPage()
 
     with allure.step('Открывает сайт https://rabota.sber.ru'):

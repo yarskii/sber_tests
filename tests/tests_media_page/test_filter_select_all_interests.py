@@ -11,7 +11,7 @@ from selene import browser, have
 @allure.label("owner", "Ярослав Гусев")
 @allure.description("Тест для проверки работы фильтра")
 @allure.link("https://rabota.sber.ru", name="Testing")
-def test_search_information():
+def test_search_information(open_sber_url):
     search = SberSearchPage()
 
     with allure.step('Открывает сайт https://rabota.sber.ru'):

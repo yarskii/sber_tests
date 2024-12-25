@@ -60,7 +60,7 @@ def open_browser(request):
     driver.quit()
 
 
-@pytest.fixture(scope='session', autouse=True)
+@pytest.fixture(scope='session')
 def open_sber_url(open_browser):
     driver_options = webdriver.ChromeOptions()
     driver_options.add_argument('--no-sandbox')
@@ -73,7 +73,3 @@ def open_sber_url(open_browser):
     browser.config.window_width = 1280
     browser.config.window_height = 724
     browser.config.base_url = 'https://rabota.sber.ru'
-
-    yield
-
-    browser.quit()
