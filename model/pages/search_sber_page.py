@@ -4,7 +4,7 @@ from selene.core.exceptions import TimeoutException
 
 class SberSearchPage:
     def open(self):
-        browser.open('/')
+        browser.open()
 
         if browser.element('.hVnStJ').should(be.visible):
             browser.element('.hVnStJ').should(be.visible).element(by.text('Хорошо')).click()

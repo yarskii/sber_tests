@@ -1,6 +1,7 @@
 from selene import browser
 from selenium import webdriver
 import pytest
+from selenium.webdriver.chrome import service
 from selenium.webdriver.chrome.options import Options
 from dotenv import load_dotenv
 import os
@@ -59,7 +60,7 @@ def open_browser(request):
 
 @pytest.fixture(scope='session')
 def open_sber_url(open_browser):
-    driver_options = webdriver.ChromeOptions()
+    driver_options = Options
     driver_options.add_argument('--ignore-certificate-errors')
     driver_options.page_load_strategy = 'eager'
 
