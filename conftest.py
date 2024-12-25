@@ -62,10 +62,15 @@ def open_browser(request):
 
 @pytest.fixture(scope='session', autouse=True)
 def open_sber_url():
-    driver_options = webdriver.ChromeOptions()
-    driver_options.page_load_strategy = 'eager'
-    driver_options.add_argument('--ignore-certificate-errors')
-    browser.config.driver_options = driver_options
+    chrome_options = Options()
+    # chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.page_load_strategy = 'eager'
+    chrome_options.add_argument('--ignore-certificate-errors')
+
+    driver_service = Service(ChromeDriverManager().install())
+    browser.config.driver = webdriver.Chrome(service=driver_service, options=chrome_options)
 
     browser.config.window_width = 1280
     browser.config.window_height = 724
