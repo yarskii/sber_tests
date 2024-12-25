@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"Тест для проверки поиска статьи","0","test_search_information","tests.tests_media_page","Wed Dec 25 11:43:48 GMT 2024","broken","Wed Dec 25 11:43:48 GMT 2024","","test_search_information","",""
+"Тест для проверки ввода данных и поиска","0","test_search_python_vacancy","tests.tests_vacancy_page","Wed Dec 25 11:43:48 GMT 2024","broken","Wed Dec 25 11:43:48 GMT 2024","","test_search_vacancy","",""
+"Тест для проверки работы кнопки VK","0","test_vk_button","tests.test_buttons","Wed Dec 25 11:43:47 GMT 2024","broken","Wed Dec 25 11:43:47 GMT 2024","","test_button_vk","",""
+"","0","test_choice_conditions","tests.tests_vacancy_page","Wed Dec 25 11:43:48 GMT 2024","broken","Wed Dec 25 11:43:48 GMT 2024","","test_filter_select_all_conditions","",""
+"Тест для проверки работы фильтра","0","test_search_information","tests.tests_media_page","Wed Dec 25 11:43:48 GMT 2024","broken","Wed Dec 25 11:43:48 GMT 2024","","test_filter_select_all_interests","",""
+"Тест для проверки работы кнопки Telegram","0","test_telegram_button","tests.test_buttons","Wed Dec 25 11:43:47 GMT 2024","broken","Wed Dec 25 11:43:47 GMT 2024","","test_button_telegram","",""
