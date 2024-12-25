@@ -29,11 +29,6 @@ def open_browser(request):
     browser_version = request.config.getoption('browser_version') or DEFAULT_BROWSER_VERSION
 
     options = Options()
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options.page_load_strategy = 'eager'
-    options.add_argument('--ignore-certificate-errors')
-
     selenoid_capabilities = {
         "browserName": "chrome",
         "browserVersion": browser_version,
@@ -54,9 +49,6 @@ def open_browser(request):
     )
 
     browser.config.driver = driver
-    browser.config.window_width = 1280
-    browser.config.window_height = 724
-    browser.config.base_url = 'https://rabota.sber.ru'
 
     yield driver
 
@@ -66,3 +58,23 @@ def open_browser(request):
     attach.add_video(browser)
 
     driver.quit()
+
+
+@pytest.fixture(scope='session', autouse=True)
+def open_sber_url():
+    chrome_options = Options()
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.page_load_strategy = 'eager'
+    chrome_options.add_argument('--ignore-certificate-errors')
+
+    driver_service = Service(ChromeDriverManager().install())
+    browser.config.driver = webdriver.Chrome(service=driver_service, options=chrome_options)
+
+    browser.config.window_width = 1280
+    browser.config.window_height = 724
+    browser.config.base_url = 'https://rabota.sber.ru'
+
+    yield
+
+    browser.quit()
