@@ -59,10 +59,12 @@ def open_browser(request):
 
 @pytest.fixture(scope='session')
 def open_sber_url(open_browser):
-    chrome_options = Options()
-    chrome_options.add_argument('--ignore-certificate-errors')
-    chrome_options.page_load_strategy = 'eager'
-    browser.config.driver = webdriver.Chrome(options=chrome_options)
+    driver_options = webdriver.ChromeOptions()
+    driver_options.add_argument('--ignore-certificate-errors')
+    driver_options.page_load_strategy = 'eager'
+    browser.config.driver_options = driver_options
+
     browser.config.window_width = 1280
     browser.config.window_height = 724
+
     browser.config.base_url = 'https://rabota.sber.ru'
