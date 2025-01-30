@@ -8,7 +8,7 @@ from model.pages.search_sber_page import SberSearchPage
 @allure.label("owner", "Ярослав Гусев")
 @allure.description("Тест для проверки работы кнопки Telegram")
 @allure.link("https://rabota.sber.ru", name="Testing")
-def test_telegram_button(open_sber_url):
+def test_telegram_button():
     search = SberSearchPage()
 
     with allure.step('Открывает сайт "https://rabota.sber.ru"'):
